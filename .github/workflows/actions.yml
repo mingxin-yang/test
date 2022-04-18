@@ -1,0 +1,18 @@
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://0d1f-221-222-21-238.ngrok.io/shopify/action
+          method: POST
+          body: |
+            {
+              "type":"1", 
+              "ii":"2",
+            }
