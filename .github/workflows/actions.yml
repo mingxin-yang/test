@@ -18,4 +18,14 @@ jobs:
             {
               "type":"1", 
               "ii":"2",
+              "aa": ${{ github.event.client_payload.body }}
             }
+  print:
+    name: Print
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Outputs
+        env:
+          body: ${{github.event.client_payload.body}}
+        run: |
+          echo body: $body
