@@ -4,6 +4,8 @@ on:
     types: started
   schedule:
     - cron: '*/15 * * * *'
+  repository_dispatch:
+    types: webhook
 jobs:
   request:
     name: Make a HTTP Request
