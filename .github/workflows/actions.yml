@@ -25,4 +25,4 @@ jobs:
         with:
           url: https://69ab-221-222-21-238.ngrok.io/shopify/action
           method: POST
-          data: '{"data": {"email": "${{ github.event.client_payload.body.email }}","orderId": "${{ github.event.client_payload.body.orderId }}","userId": "${{ github.event.client_payload.body.userId }}"},"name": "orders_unfulfilled_noti"}'
+          data: '{"data": ${{ github.event.client_payload.body}}, "name": "orders_unfulfilled_noti"}'
