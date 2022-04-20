@@ -2,14 +2,23 @@ name: test1
 on:
   watch:
     types: started
-  schedule:
-    - cron: '*/15 * * * *'
+  # schedule:
+  #  - cron: '*/15 * * * *'
   repository_dispatch:
     types: webhook
-jobs:
-  request:
-    name: Make a HTTP Request
+jobs:    
+  print:
+    name: Print
     runs-on: ubuntu-latest
+    steps:
+      - name: Print Outputs
+        env:
+          body: ${{github.event.client_payload.body}}
+        run: |
+          echo body: $body
+  doTheRestOfTheWork:
+    runs-on: ubuntu-latest
+    environment: delayTest
     steps:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
@@ -22,12 +31,3 @@ jobs:
               "ii":"2",
               "aa": ${{ github.event.client_payload.body }}
             }
-  print:
-    name: Print
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print Outputs
-        env:
-          body: ${{github.event.client_payload.body}}
-        run: |
-          echo body: $body
