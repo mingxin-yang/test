@@ -23,6 +23,6 @@ jobs:
       - name: Make a HTTP Request
         uses: actionsflow/axios@v1
         with:
-          url: https://69ab-221-222-21-238.ngrok.io/shopify/action
+          url: https://d35b-124-64-16-109.ngrok.io/shopify/action
           method: POST
           data: '{"data": ${{github.event.client_payload.body}}, "name": "orders_unfulfilled_noti"}'
